@@ -1,5 +1,5 @@
 from Oracle    import Oracle
-from sqlDecorators import decorateSQL
+from Util import decorateSQL
 
 class Table(Oracle):
     """ This class is a base class for abstractions of Oracle tables.
