@@ -66,4 +66,5 @@ def decorateSQL():
         def __setattr__(self, attr, value):
             value = decorated(value)
             super(DecorateSQL, self).__setattr__(attr, value)
+
     return DecorateSQL
