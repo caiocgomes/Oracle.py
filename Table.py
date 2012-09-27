@@ -4,9 +4,9 @@ from Util import decorateSQL
 class Table(Oracle):
     """ This class is a base class for abstractions of Oracle tables.
 
-    When you inherit from this class, all methods starting with 'query' will be transformed in queries
-    that execute the query string returned by the original method and return a cx_Oracle iterable cursor
-    for the result.
+    When you inherit from this class, all methods starting with 'query' will be transformed in queries that execute the query string returned by the original method and return a cx_Oracle iterable cursor for the result. All methods starting with 'get' will be transformed in queries that fetch exactly one result based on the query string returned by it. 
+
+    All methods decorated with @dontDecorate won't be altered.
 
     Also, formatting patterns like {blabla} will be substituted by values of 'blabla' fields contained in either: 
         1) the dictionary returned by the methods Table._sqlPatterns() or Table._tableAlias(),

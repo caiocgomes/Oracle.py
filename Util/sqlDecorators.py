@@ -20,6 +20,8 @@ def sqlQueryFetchOne(func):
     @wraps(func)
     def call(instance, *args, **kwargs):
         queryString = getQueryString(func, instance, *args, **kwargs)
+        if func.printString:
+            print queryString
         return instance.fetchOne(queryString)[0]
     return call
 
@@ -27,12 +29,18 @@ def sqlQuery(func):
     @wraps(func)
     def call(instance, *args, **kwargs):
         queryString = getQueryString(func, instance, *args, **kwargs)
+        if func.printString:
+            print queryString
         return instance.query(queryString)
     return call
 
 
 def dontDecorate(func):
     func.decorate = False
+    return func
+
+def printQuery(func):
+    func.printQuery = True
     return func
 
 def isDecorable(attr, value):
