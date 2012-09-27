@@ -20,7 +20,7 @@ def sqlQueryFetchOne(func):
     @wraps(func)
     def call(instance, *args, **kwargs):
         queryString = getQueryString(func, instance, *args, **kwargs)
-        if func.printString:
+        if getattr(func,'printString', False):
             print queryString
         return instance.fetchOne(queryString)[0]
     return call
