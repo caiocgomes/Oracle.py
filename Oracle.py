@@ -7,6 +7,11 @@ class Oracle(object):
         connstring = '{user}/{passwd}@{host}/{service}'.format(**args)
         self.con    = cx_Oracle.connect(connstring)
 
+    def __del__(self):
+
+
+
+
     def query(self, querystring):
         cursor = cx_Oracle.Cursor(self.con)
         cursor.execute(querystring)
@@ -15,3 +20,9 @@ class Oracle(object):
     def fetchOne(self, querystring):
         cursor = self.query(querystring)
         return cursor.fetchone()
+
+    def callProcedure(self, procname, *args):
+        cursor = cx_Oracle.Cursor(self.con)
+        cursor.callproc(procname, args)
+
+
