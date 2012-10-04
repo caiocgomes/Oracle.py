@@ -1,3 +1,0 @@
-[submodule "credentials"]
-	path = credentials
-	url = git@bitbucket.org:rafael_calsaverini/credentials.py.git
