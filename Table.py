@@ -46,3 +46,6 @@ class Comunidade(Table):
         return """
         select titulo from {thisTable} where lbs_id = '{lbsid}'
         """
+
+    def queryPOI(self):
+        return """ SELECT * FROM {thisTable}"""
